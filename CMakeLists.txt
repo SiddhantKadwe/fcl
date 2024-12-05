@@ -73,6 +73,9 @@ include(GNUInstallDirs)
 include(CompilerSettings)
 include(FCLVersion)
 
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(OCTOMAP REQUIRED octomap)
+
 if(MSVC OR IS_ICPC)
   option(FCL_STATIC_LIBRARY "Whether the FCL library should be static rather than shared" ON)
 else()
@@ -238,7 +241,9 @@ option(FCL_WITH_OCTOMAP "OctoMap library support" ON)
 set(FCL_HAVE_OCTOMAP 0)
 
 if(FCL_WITH_OCTOMAP)
-  find_package(octomap QUIET)
+  # find_package(octomap QUIET)
+  include(FindPkgConfig)
+  pkg_check_modules(OCTOMAP REQUIRED octomap)
 
   # Older versions of octomap-config.cmake may not define OCTOMAP_VERSION so
   # fall back to pkg-config
