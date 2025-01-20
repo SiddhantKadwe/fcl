@@ -73,8 +73,8 @@ include(GNUInstallDirs)
 include(CompilerSettings)
 include(FCLVersion)
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(OCTOMAP REQUIRED octomap)
+# find_package(PkgConfig REQUIRED)
+# pkg_check_modules(OCTOMAP REQUIRED octomap)
 
 if(MSVC OR IS_ICPC)
   option(FCL_STATIC_LIBRARY "Whether the FCL library should be static rather than shared" ON)
